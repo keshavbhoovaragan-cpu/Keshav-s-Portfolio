@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keshav Bhoovaragan</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ── HERO ── */
+  .hero {
+    min-height: calc(100vh - var(--nav-h));
+    display: grid; grid-template-rows: 1fr auto;
+    padding: 0;
+    position: relative; overflow: hidden;
+  }
+
+  /* top data bar */
+  .data-bar {
+    border-bottom: 1px solid var(--border);
+    padding: 10px 40px;
+    display: flex; gap: 40px; align-items: center;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    color: var(--muted); letter-spacing: 1px;
+    background: var(--cream2);
+  }
+  .data-item { display: flex; gap: 8px; align-items: center; }
+  .data-item span:first-child { color: var(--orange); }
+  .data-bar-right { margin-left: auto; display: flex; gap: 40px; }
+
+  /* main hero body */
+  .hero-body {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - var(--nav-h) - 41px);
+  }
+
+  .hero-left {
+    padding: 60px 40px 60px 40px;
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+
+  .hero-kicker {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    color: var(--orange); letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+  }
+  .kicker-dot { width: 6px; height: 6px; background: var(--orange); display: inline-block; animation: blink 1.2s step-end infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 140px);
+    line-height: 0.9; letter-spacing: 3px;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+  .hero-name .orange { color: var(--orange); }
+
+  .hero-desc {
+    margin-top: 36px;
+    font-size: 15px; color: var(--ink3); line-height: 1.7;
+    max-width: 420px;
+    border-left: 2px solid var(--orange); padding-left: 16px;
+  }
+
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
+
+  /* right panel */
+  .hero-right {
+    display: grid; grid-template-rows: 1fr 1fr;
+  }
+
+  .hero-ascii {
+    border-bottom: 1px solid var(--border);
+    padding: 32px 40px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    color: var(--ink3); line-height: 1.4;
+    overflow: hidden; position: relative;
+    background: var(--cream2);
+  }
+  .ascii-label { font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  .ascii-art { white-space: pre; color: var(--ink); opacity: 0.75; }
+  .ascii-cursor { display: inline-block; width: 8px; height: 14px; background: var(--orange); animation: blink 1s step-end infinite; vertical-align: bottom; }
+
+  .hero-stats-panel {
+    padding: 32px 40px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .h-stat {
+    padding: 20px; border: 1px solid var(--border); margin: -1px -1px 0 0;
+    transition: background 0.2s;
+  }
+  .h-stat:hover { background: var(--cream2); }
+  .h-stat-n {
+    font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .h-stat-n .unit { font-size: 28px; color: var(--orange); }
+  .h-stat-l { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* marquee */
+  .marquee-strip {
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    background: var(--ink); overflow: hidden;
+    padding: 10px 0; white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-flex; gap: 0;
+    animation: marqueeScroll 22s linear infinite;
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    color: var(--cream3); letter-spacing: 2px;
+  }
+  .marquee-item {
+    padding: 0 32px; display: inline-flex; align-items: center; gap: 12px;
+    border-right: 1px solid rgba(240,236,226,0.1);
+  }
+  .marquee-dot { width: 5px; height: 5px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
+  @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── QUICK LINKS ── */
+  .ql-section { padding: 80px 40px; }
+  .ql-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); }
+  .ql-card {
+    padding: 36px 28px; border-right: 1px solid var(--border);
+    text-decoration: none; display: block; position: relative; overflow: hidden;
+    transition: background 0.2s;
+  }
+  .ql-card:last-child { border-right: none; }
+  .ql-card:hover { background: var(--cream2); }
+  .ql-card:hover .ql-arrow { transform: translate(3px, -3px); color: var(--orange); }
+  .ql-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--cream3); line-height: 1; margin-bottom: 12px; }
+  .ql-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--ink); letter-spacing: 1px; margin-bottom: 8px; }
+  .ql-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 1px; line-height: 1.6; }
+  .ql-arrow { position: absolute; top: 28px; right: 28px; font-size: 20px; color: var(--border); transition: all 0.2s; }
+  .ql-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+  .ql-card:hover .ql-bar { transform: scaleX(1); }
+
+  @media (max-width: 900px) {
+    .hero-body { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 32px 16px 40px; }
+    .hero-name { font-size: clamp(52px, 14vw, 80px); letter-spacing: -2px; }
+    .hero-desc { font-size: 14px; }
+    .hero-ctas { flex-direction: column; gap: 10px; }
+    .hero-ctas .btn { width: 100%; justify-content: center; }
+    .hero-kicker { font-size: 10px; }
+    .stats { flex-direction: column; border-radius: 0; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 16px 20px; }
+    .stat:last-child { border-bottom: none; }
+    .stat-n { font-size: 28px; }
+    .ql-grid { grid-template-columns: 1fr 1fr; }
+    .ql-card { border-bottom: 1px solid var(--border); padding: 24px 18px; }
+    .ql-num { font-size: 36px; }
+    .ql-title { font-size: 22px; }
+    .ql-section { padding: 32px 16px 48px; }
+    .data-bar { padding: 8px 16px; gap: 16px; flex-wrap: wrap; font-size: 9px; }
+    .data-bar-right { display: none; }
+    .marquee-inner { font-size: 10px; }
+  }
+  @media (max-width: 480px) {
+    .ql-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div id="kb-cursor"></div>
+<div id="kb-cursor-dot"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">KB<span class="nav-logo-slash">/</span></a>
+  <div class="nav-center">PORTFOLIO &mdash; <span id="kb-time">00:00:00</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap page-enter">
+
+  <div class="hero">
+    <!-- data bar -->
+    <div class="data-bar">
+      <div class="data-item"><span>STATUS</span><span>SEEKING FULL-TIME &amp; CO-OPS · 2027</span></div>
+      <div class="data-item"><span>LOC</span><span>Chalfont, PA</span></div>
+      <div class="data-item"><span>GRAD</span><span>May 2027</span></div>
+      <div class="data-bar-right">
+        <div class="data-item"><span>IBM</span><span>SDE Intern</span></div>
+        <div class="data-item"><span>UMD</span><span>Smith School '27</span></div>
+      </div>
+    </div>
+
+    <div class="hero-body">
+      <!-- LEFT -->
+      <div class="hero-left">
+        <div>
+          <div class="hero-kicker"><span class="kicker-dot"></span> ML Engineer &amp; Software Developer</div>
+          <h1 class="hero-name">
+            KESHAV<br>
+            <span class="orange">BHOO</span>VA<br>RAGAN
+          </h1>
+          <p class="hero-desc">
+            Building intelligent systems at the intersection of <strong>machine learning</strong>, backend engineering, and business analytics. Currently at <strong>IBM</strong>.
+          </p>
+          <div class="hero-ctas">
+            <a href="experience.html" class="btn btn-fill">View Experience →</a>
+            <a href="contact.html" class="btn btn-outline">Connect</a>
+          </div>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;padding-top:32px;border-top:1px solid var(--border);">
+          keshavbhoovaragan@gmail.com &nbsp;·&nbsp; 267-237-4900 &nbsp;·&nbsp; linkedin.com/in/kbhoovar
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="hero-right">
+        <div class="hero-ascii">
+          <div class="ascii-label">// system.profile</div>
+          <div class="ascii-art" id="asciiArt"></div>
+          <span class="ascii-cursor"></span>
+        </div>
+        <div class="hero-stats-panel">
+          <div class="h-stat">
+            <div class="h-stat-n">2<span class="unit">+</span></div>
+            <div class="h-stat-l">Years Experience</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-n">20<span class="unit">%</span></div>
+            <div class="h-stat-l">Accuracy Boost</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-n">50<span class="unit">+</span></div>
+            <div class="h-stat-l">Sites Analyzed</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-n"><span class="unit">#</span>1</div>
+            <div class="h-stat-l">AI Award</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <div class="marquee-item"><div class="marquee-dot"></div>Machine Learning</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Flask REST APIs</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>NLP &amp; Healthcare AI</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>IBM SDE Intern 2026</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Python &amp; Java</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>UMD Smith School</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Azure &amp; Git</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Data Science</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Inspirit AI — 1st Place</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Clinical Trial Analytics</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Tech with Keshav on YouTube</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Meal Match · Food Redistribution</div>
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="ql-section">
+    <div class="ql-grid reveal">
+      <a href="experience.html" class="ql-card">
+        <div class="ql-num">01</div>
+        <div class="ql-title">Experience</div>
+        <div class="ql-sub">IBM · Ascendion<br>2 internships · 2023–2026</div>
+        <div class="ql-arrow">↗</div>
+        <div class="ql-bar"></div>
+      </a>
+      <a href="projects.html" class="ql-card">
+        <div class="ql-num">02</div>
+        <div class="ql-title">Projects</div>
+        <div class="ql-sub">ML · React · Flask<br>GitHub repositories</div>
+        <div class="ql-arrow">↗</div>
+        <div class="ql-bar"></div>
+      </a>
+      <a href="skills.html" class="ql-card">
+        <div class="ql-num">03</div>
+        <div class="ql-title">Skills</div>
+        <div class="ql-sub">Python · Java · Azure<br>ML · NLP · SQL</div>
+        <div class="ql-arrow">↗</div>
+        <div class="ql-bar"></div>
+      </a>
+      <a href="contact.html" class="ql-card">
+        <div class="ql-num">04</div>
+        <div class="ql-title">Contact</div>
+        <div class="ql-sub">Full-time &amp; co-ops 2027<br>Reply within 24h</div>
+        <div class="ql-arrow">↗</div>
+        <div class="ql-bar"></div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div>&copy; 2026 KESHAV BHOOVARAGAN</div>
+  <div class="footer-links">
+    <a href="index.html">HOME</a>
+    <a href="experience.html">EXPERIENCE</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="skills.html">SKILLS</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/kbhoovar" target="_blank">LINKEDIN</a>
+    <a href="https://github.com/keshavbhoovaragan-cpu" target="_blank">GITHUB</a>
+    <a href="https://www.youtube.com/@kbthetechboss9169" target="_blank">YOUTUBE</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+// Typewriter ASCII
+const lines = [
+  'NAME     Keshav Bhoovaragan',
+  'ROLE     SDE Intern @ IBM',
+  'SCHOOL   UMD Smith \'27',
+  'MAJOR    OMBA',
+  'STACK    Python · Java · SQL',
+  'AI       ML · NLP · Flask',
+  'CLOUD    Azure · Git',
+  'AWARD    Inspirit AI — 1st',
+  'TENNIS   State Champ 🎾',
+  '',
+  '> seeking_opportunities = True',
+  '> print("Let\'s build.")',
+];
+const el = document.getElementById('asciiArt');
+let li = 0, ci = 0;
+function typeChar() {
+  if (!el) return;
+  if (li >= lines.length) return;
+  if (ci < lines[li].length) {
+    el.textContent += lines[li][ci];
+    ci++;
+    setTimeout(typeChar, 28);
+  } else {
+    el.textContent += '\n';
+    li++; ci = 0;
+    setTimeout(typeChar, li < lines.length ? 60 : 0);
+  }
+}
+setTimeout(typeChar, 600);
+</script>
+</body>
+</html>

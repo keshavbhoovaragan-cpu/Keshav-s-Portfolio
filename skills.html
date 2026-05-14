@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Keshav Bhoovaragan</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-hero { padding:72px 40px 40px; border-bottom:1px solid var(--border); position:relative; overflow:hidden; display:flex; justify-content:space-between; align-items:flex-end; }
+  .page-hero-bg { font-family:'Bebas Neue',sans-serif; font-size:clamp(100px,18vw,220px); color:var(--cream2); line-height:1; position:absolute; right:-20px; bottom:-20px; pointer-events:none; user-select:none; z-index:0; }
+  .page-hero > * { position:relative; z-index:1; }
+
+  .skills-wrap { padding:64px 40px 80px; }
+
+  /* ── FILTER ROW ── */
+  .filter-row { display:flex; gap:0; border:1px solid var(--border); margin-bottom:56px; flex-wrap:wrap; }
+  .f-btn {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px;
+    text-transform:uppercase; padding:12px 20px; border-right:1px solid var(--border);
+    background:transparent; color:var(--ink3); cursor:none; border-top:none; border-bottom:none; border-left:none;
+    transition:all 0.2s; position:relative;
+  }
+  .f-btn:last-child { border-right:none; }
+  .f-btn::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--orange); transform:scaleX(0); transition:transform 0.2s; }
+  .f-btn:hover { background:var(--cream2); color:var(--ink); }
+  .f-btn.on { background:var(--ink); color:var(--cream); }
+  .f-btn.on::after { transform:scaleX(1); }
+
+  /* ── SKILLS GRID ── */
+  .sk-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:0; border:1px solid var(--border); }
+
+  .sk-card {
+    padding:32px 28px; border-right:1px solid var(--border); border-bottom:1px solid var(--border);
+    transition:background 0.2s; position:relative; overflow:hidden;
+  }
+  .sk-card:hover { background:var(--cream2); }
+  .sk-card:hover .sk-accent { transform:scaleX(1); }
+  .sk-card.hidden { display:none; }
+
+  .sk-accent { position:absolute; top:0; left:0; right:0; height:2px; background:var(--orange); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
+
+  .sk-head { display:flex; align-items:center; gap:14px; margin-bottom:22px; }
+  .sk-icon { font-size:24px; }
+  .sk-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; color:var(--ink); }
+  .sk-cat-label { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; }
+
+  .skill-bars { display:flex; flex-direction:column; gap:14px; }
+  .sk-row { }
+  .sk-name-row { display:flex; justify-content:space-between; margin-bottom:5px; }
+  .sk-name { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink3); letter-spacing:.3px; }
+  .sk-pct { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--orange); }
+  .bar-track { height:3px; background:var(--cream3); position:relative; }
+  .bar-fill { height:100%; background:var(--ink); width:0; transition:width 1.1s cubic-bezier(0.22,1,0.36,1); }
+  .bar-fill:hover { background:var(--orange); }
+
+  /* legend */
+  .sk-legend { display:flex; gap:0; border:1px solid var(--border); margin-bottom:32px; }
+  .sk-legend-item { padding:12px 20px; border-right:1px solid var(--border); font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; display:flex; align-items:center; gap:8px; }
+  .sk-legend-item:last-child { border-right:none; }
+  .sk-legend-sq { width:8px; height:8px; display:inline-block; }
+
+  @media (max-width:900px) {
+    .skills-wrap { padding:32px 16px 48px; }
+    .page-hero { padding:32px 16px 28px; flex-direction:column; gap:12px; align-items:flex-start; }
+    .page-hero-bg { font-size:100px; right:-10px; bottom:-10px; }
+    .filter-row { overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; border-radius:0; }
+    .f-btn { white-space:nowrap; padding:10px 14px; font-size:9px; }
+    .sk-grid { grid-template-columns:1fr; }
+    .sk-card { padding:20px 16px; }
+    .sk-title { font-size:18px; }
+    .sk-legend { overflow-x:auto; flex-wrap:nowrap; }
+    .sk-legend-item { white-space:nowrap; font-size:8px; padding:10px 14px; }
+    .bar-track { height:4px; }
+  }
+</style>
+</head>
+<body>
+<div id="kb-cursor"></div>
+<div id="kb-cursor-dot"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">KB<span class="nav-logo-slash">/</span></a>
+  <div class="nav-center">SKILLS &mdash; <span id="kb-time">00:00:00</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html" class="active">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap page-enter">
+  <div class="page-hero">
+    <div>
+      <div class="sec-tag">Technical Toolkit</div>
+      <h1 class="sec-title" style="margin-bottom:0;">SKILLS &amp;<br>TECHNOLOGIES</h1>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;line-height:2;text-align:right;">
+      <div>8 Categories</div>
+      <div>35+ Skills</div>
+      <div>2+ Yrs Applied Use</div>
+    </div>
+    <div class="page-hero-bg">SKL</div>
+  </div>
+
+  <div class="skills-wrap">
+    <!-- Legend -->
+    <div class="sk-legend reveal">
+      <div class="sk-legend-item"><div class="sk-legend-sq" style="background:var(--ink);"></div>Expert 90%+</div>
+      <div class="sk-legend-item"><div class="sk-legend-sq" style="background:var(--ink3);"></div>Proficient 70–89%</div>
+      <div class="sk-legend-item"><div class="sk-legend-sq" style="background:var(--muted);"></div>Familiar 50–69%</div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-row reveal">
+      <button class="f-btn on" data-cat="all">All</button>
+      <button class="f-btn" data-cat="programming">Programming</button>
+      <button class="f-btn" data-cat="ai">AI &amp; Data</button>
+      <button class="f-btn" data-cat="tools">Tools</button>
+      <button class="f-btn" data-cat="business">Business</button>
+      <button class="f-btn" data-cat="design">Design</button>
+      <button class="f-btn" data-cat="soft">Soft Skills</button>
+    </div>
+
+    <!-- Cards -->
+    <div class="sk-grid reveal" id="skGrid">
+
+      <div class="sk-card" data-cat="programming">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🐍</div><div><div class="sk-title">Python</div><div class="sk-cat-label">Programming</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Python</span><span class="sk-pct">92%</span></div><div class="bar-track"><div class="bar-fill" data-w="92"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Flask</span><span class="sk-pct">85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Jupyter</span><span class="sk-pct">88%</span></div><div class="bar-track"><div class="bar-fill" data-w="88"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="programming">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">☕</div><div><div class="sk-title">Java &amp; JS</div><div class="sk-cat-label">Programming</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Java</span><span class="sk-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">JavaScript</span><span class="sk-pct">72%</span></div><div class="bar-track"><div class="bar-fill" data-w="72"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">HTML / CSS</span><span class="sk-pct">75%</span></div><div class="bar-track"><div class="bar-fill" data-w="75"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="programming">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🗄️</div><div><div class="sk-title">SQL &amp; Data</div><div class="sk-cat-label">Programming</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">SQL</span><span class="sk-pct">82%</span></div><div class="bar-track"><div class="bar-fill" data-w="82"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Data Structures</span><span class="sk-pct">78%</span></div><div class="bar-track"><div class="bar-fill" data-w="78"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">OOP Design</span><span class="sk-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="ai">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🤖</div><div><div class="sk-title">Machine Learning</div><div class="sk-cat-label">AI &amp; Data</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">ML Modeling</span><span class="sk-pct">88%</span></div><div class="bar-track"><div class="bar-fill" data-w="88"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Feature Engineering</span><span class="sk-pct">85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Hyperparameter Tuning</span><span class="sk-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="ai">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🧠</div><div><div class="sk-title">NLP &amp; Analytics</div><div class="sk-cat-label">AI &amp; Data</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">NLP</span><span class="sk-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Data Analysis</span><span class="sk-pct">90%</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Statistical Modeling</span><span class="sk-pct">83%</span></div><div class="bar-track"><div class="bar-fill" data-w="83"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="tools">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">☁️</div><div><div class="sk-title">Cloud &amp; DevOps</div><div class="sk-cat-label">Tools</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Azure</span><span class="sk-pct">70%</span></div><div class="bar-track"><div class="bar-fill" data-w="70"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Git / GitHub</span><span class="sk-pct">88%</span></div><div class="bar-track"><div class="bar-fill" data-w="88"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">REST API Design</span><span class="sk-pct">82%</span></div><div class="bar-track"><div class="bar-fill" data-w="82"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="tools">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🔒</div><div><div class="sk-title">Security &amp; Data</div><div class="sk-cat-label">Tools</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Cybersecurity Fundamentals</span><span class="sk-pct">65%</span></div><div class="bar-track"><div class="bar-fill" data-w="65"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Data Management</span><span class="sk-pct">82%</span></div><div class="bar-track"><div class="bar-fill" data-w="82"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="business">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">📊</div><div><div class="sk-title">Business Analytics</div><div class="sk-cat-label">Business</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Financial Analysis</span><span class="sk-pct">78%</span></div><div class="bar-track"><div class="bar-fill" data-w="78"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Excel</span><span class="sk-pct">85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Operations Management</span><span class="sk-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="design">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🎨</div><div><div class="sk-title">Design</div><div class="sk-cat-label">Design</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Adobe Creative Suite</span><span class="sk-pct">72%</span></div><div class="bar-track"><div class="bar-fill" data-w="72"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Motion Graphics</span><span class="sk-pct">65%</span></div><div class="bar-track"><div class="bar-fill" data-w="65"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">3D Design</span><span class="sk-pct">60%</span></div><div class="bar-track"><div class="bar-fill" data-w="60"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="soft">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🤝</div><div><div class="sk-title">Collaboration</div><div class="sk-cat-label">Soft Skills</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Cross-functional Teamwork</span><span class="sk-pct">95%</span></div><div class="bar-track"><div class="bar-fill" data-w="95"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Active Listening</span><span class="sk-pct">90%</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Conflict Resolution</span><span class="sk-pct">85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="soft">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🎯</div><div><div class="sk-title">Leadership</div><div class="sk-cat-label">Soft Skills</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Team Leadership</span><span class="sk-pct">90%</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Mentorship</span><span class="sk-pct">88%</span></div><div class="bar-track"><div class="bar-fill" data-w="88"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Decision Making</span><span class="sk-pct">87%</span></div><div class="bar-track"><div class="bar-fill" data-w="87"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="soft">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">💬</div><div><div class="sk-title">Communication</div><div class="sk-cat-label">Soft Skills</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Technical Presentations</span><span class="sk-pct">90%</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Written Communication</span><span class="sk-pct">88%</span></div><div class="bar-track"><div class="bar-fill" data-w="88"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Stakeholder Updates</span><span class="sk-pct">85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="soft">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🧩</div><div><div class="sk-title">Problem Solving</div><div class="sk-cat-label">Soft Skills</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Analytical Thinking</span><span class="sk-pct">93%</span></div><div class="bar-track"><div class="bar-fill" data-w="93"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Critical Thinking</span><span class="sk-pct">91%</span></div><div class="bar-track"><div class="bar-fill" data-w="91"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Creative Solutions</span><span class="sk-pct">87%</span></div><div class="bar-track"><div class="bar-fill" data-w="87"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="soft">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">⏱️</div><div><div class="sk-title">Work Ethic</div><div class="sk-cat-label">Soft Skills</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Time Management</span><span class="sk-pct">89%</span></div><div class="bar-track"><div class="bar-fill" data-w="89"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Adaptability</span><span class="sk-pct">92%</span></div><div class="bar-track"><div class="bar-fill" data-w="92"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Attention to Detail</span><span class="sk-pct">90%</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="soft">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🔄</div><div><div class="sk-title">Agile &amp; Process</div><div class="sk-cat-label">Soft Skills</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Agile / Scrum</span><span class="sk-pct">82%</span></div><div class="bar-track"><div class="bar-fill" data-w="82"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Project Management</span><span class="sk-pct">84%</span></div><div class="bar-track"><div class="bar-fill" data-w="84"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Code Review</span><span class="sk-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="ai">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">📈</div><div><div class="sk-title">Predictive Modeling</div><div class="sk-cat-label">AI &amp; Data</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Risk Scoring Models</span><span class="sk-pct">86%</span></div><div class="bar-track"><div class="bar-fill" data-w="86"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Anomaly Detection</span><span class="sk-pct">82%</span></div><div class="bar-track"><div class="bar-fill" data-w="82"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Model Evaluation &amp; Metrics</span><span class="sk-pct">88%</span></div><div class="bar-track"><div class="bar-fill" data-w="88"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="business">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">📋</div><div><div class="sk-title">Strategy &amp; Research</div><div class="sk-cat-label">Business</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Market Research</span><span class="sk-pct">78%</span></div><div class="bar-track"><div class="bar-fill" data-w="78"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Business Case Analysis</span><span class="sk-pct">82%</span></div><div class="bar-track"><div class="bar-fill" data-w="82"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">PowerPoint / Reporting</span><span class="sk-pct">87%</span></div><div class="bar-track"><div class="bar-fill" data-w="87"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk-card" data-cat="tools">
+        <div class="sk-accent"></div>
+        <div class="sk-head"><div class="sk-icon">🧪</div><div><div class="sk-title">Testing &amp; Debugging</div><div class="sk-cat-label">Tools</div></div></div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Unit Testing</span><span class="sk-pct">78%</span></div><div class="bar-track"><div class="bar-fill" data-w="78"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Debugging &amp; Profiling</span><span class="sk-pct">82%</span></div><div class="bar-track"><div class="bar-fill" data-w="82"></div></div></div>
+          <div class="sk-row"><div class="sk-name-row"><span class="sk-name">Documentation</span><span class="sk-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+
+<footer>
+  <div>&copy; 2026 KESHAV BHOOVARAGAN</div>
+  <div class="footer-links">
+    <a href="index.html">HOME</a><a href="experience.html">EXPERIENCE</a><a href="projects.html">PROJECTS</a><a href="contact.html">CONTACT</a>
+  </div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/kbhoovar" target="_blank">LINKEDIN</a>
+    <a href="https://github.com/keshavbhoovaragan-cpu" target="_blank">GITHUB</a>
+    <a href="https://www.youtube.com/@kbthetechboss9169" target="_blank">YOUTUBE</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+  // filter
+  document.querySelectorAll('.f-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('.sk-card').forEach(c => {
+        c.classList.toggle('hidden', cat !== 'all' && c.dataset.cat !== cat);
+      });
+      animBars();
+    });
+  });
+
+  function animBars() {
+    document.querySelectorAll('.bar-fill').forEach(b => {
+      b.style.width = '0';
+      setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 80);
+    });
+  }
+
+  const obs = new IntersectionObserver(e => {
+    e.forEach(en => { if (en.isIntersecting) { animBars(); obs.disconnect(); } });
+  }, { threshold: 0.15 });
+  const grid = document.getElementById('skGrid');
+  if (grid) obs.observe(grid);
+</script>
+</body>
+</html>

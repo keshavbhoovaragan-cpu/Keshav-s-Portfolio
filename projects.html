@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Keshav Bhoovaragan</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-hero {
+    padding: 72px 40px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .page-hero-bg { font-family:'Bebas Neue',sans-serif; font-size:clamp(100px,18vw,220px); color:var(--cream2); line-height:1; letter-spacing:4px; position:absolute; right:-20px; bottom:-20px; pointer-events:none; user-select:none; z-index:0; }
+  .page-hero > * { position:relative; z-index:1; }
+
+  /* ── PROJECT CARDS ── */
+  .proj-section { padding: 64px 40px; }
+
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); margin-bottom: 64px; }
+
+  .proj-card {
+    padding: 40px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    text-decoration: none; display: flex; flex-direction: column;
+    position: relative; overflow: hidden; transition: background 0.2s;
+    color: var(--ink);
+  }
+  .proj-card:nth-child(2n) { border-right: none; }
+  .proj-card:hover { background: var(--cream2); }
+  .proj-card:hover .proj-arrow { color: var(--orange); transform: translate(3px,-3px); }
+  .proj-card:hover .proj-line { transform: scaleX(1); }
+
+  .proj-line { position:absolute; top:0; left:0; right:0; height:3px; background:var(--orange); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
+
+  .proj-num { font-family:'Bebas Neue',sans-serif; font-size:64px; color:var(--cream3); line-height:1; margin-bottom:16px; }
+  .proj-arrow { position:absolute; top:32px; right:32px; font-size:22px; color:var(--border); transition:all 0.2s; }
+
+  .proj-lang-row { display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:1px; margin-bottom:14px; }
+  .lang-sq { width:8px; height:8px; background:var(--orange); display:inline-block; }
+
+  .proj-title { font-family:'Bebas Neue',sans-serif; font-size:30px; letter-spacing:1px; line-height:1.05; color:var(--ink); margin-bottom:12px; }
+  .proj-desc { font-size:13px; color:var(--ink3); line-height:1.65; flex:1; margin-bottom:24px; }
+
+  /* YouTube card */
+  .yt-card {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:32px 40px; border:1px solid var(--border); text-decoration:none;
+    color:var(--ink); transition:all 0.25s; background:var(--cream2);
+    flex-wrap:wrap; gap:20px;
+  }
+  .yt-card:hover { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+  .yt-card:hover .yt-sub { color:rgba(240,236,226,0.6); }
+  .yt-card:hover .yt-cta { color:var(--orange); }
+  .yt-left { display:flex; align-items:center; gap:20px; }
+  .yt-icon { width:56px; height:56px; background:#ff0000; display:flex; align-items:center; justify-content:center; color:#fff; flex-shrink:0; }
+  .yt-title { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:1px; margin-bottom:4px; }
+  .yt-sub { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:.5px; transition:color 0.25s; }
+  .yt-cta { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--orange); transition:color 0.25s; }
+
+  /* ── ACTIVITIES ── */
+  .act-section { padding: 0 40px 80px; border-top: 2px solid var(--ink); padding-top: 64px; }
+
+  .act-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--border); }
+  .act-card {
+    padding:28px 24px; border-right:1px solid var(--border);
+    transition:background 0.2s; position:relative; overflow:hidden;
+  }
+  .act-card:last-child { border-right:none; }
+  .act-card:hover { background:var(--cream2); }
+  .act-card:hover .act-bar { transform:scaleX(1); }
+
+  .act-bar { position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--orange); transform:scaleX(0); transform-origin:left; transition:transform 0.25s; }
+  .act-icon { font-size:28px; margin-bottom:16px; }
+  .act-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; color:var(--ink); margin-bottom:4px; }
+  .act-org { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--orange); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px; }
+  .act-desc { font-size:12px; color:var(--ink3); line-height:1.6; }
+  .act-award { display:inline-block; background:var(--ink); color:var(--cream); font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:1px; padding:3px 8px; margin-top:10px; }
+
+  @media (max-width:900px) {
+    .proj-grid { grid-template-columns:1fr; }
+    .proj-card { border-right:1px solid var(--border) !important; border-bottom:1px solid var(--border); padding: 24px 16px; }
+    .proj-num { font-size: 40px; }
+    .proj-title { font-size: 22px; }
+    .proj-desc { font-size: 12px; }
+    .act-grid { grid-template-columns:1fr 1fr; }
+    .act-card:nth-child(2n) { border-right:none; }
+    .act-card { border-bottom:1px solid var(--border); padding: 20px 16px; }
+    .act-title { font-size: 18px; }
+    .page-hero { padding:32px 16px 28px; flex-direction:column; gap:12px; align-items:flex-start; }
+    .page-hero-bg { font-size: 100px; right:-10px; bottom:-10px; }
+    .proj-section { padding: 32px 16px; }
+    .act-section { padding: 32px 16px 48px; }
+    .yt-card { padding: 20px 16px; }
+    .yt-title { font-size: 20px; }
+    .yt-left { flex-direction: column; gap: 12px; }
+  }
+  @media (max-width: 480px) {
+    .act-grid { grid-template-columns: 1fr; }
+    .act-card { border-right: 1px solid var(--border) !important; }
+  }
+</style>
+</head>
+<body>
+<div id="kb-cursor"></div>
+<div id="kb-cursor-dot"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">KB<span class="nav-logo-slash">/</span></a>
+  <div class="nav-center">PROJECTS &mdash; <span id="kb-time">00:00:00</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap page-enter">
+
+  <div class="page-hero">
+    <div>
+      <div class="sec-tag">GitHub &amp; Activities</div>
+      <h1 class="sec-title" style="margin-bottom:0;">PROJECTS<br>&amp; BEYOND</h1>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;line-height:2;text-align:right;">
+      <div>3 Projects</div>
+      <div>4 Activities</div>
+      <div>1 YouTube Channel</div>
+    </div>
+    <div class="page-hero-bg">PRJ</div>
+  </div>
+
+  <div class="proj-section">
+    <div class="proj-grid reveal">
+
+      <a href="https://github.com/keshavbhoovaragan-cpu/Ascension-Project-" target="_blank" class="proj-card">
+        <div class="proj-line"></div>
+        <div class="proj-num">01</div>
+        <div class="proj-arrow">↗</div>
+        <div class="proj-lang-row"><div class="lang-sq"></div>Python · Flask · NLP · Jupyter</div>
+        <div class="proj-title">Ascendion Chatbot</div>
+        <div class="proj-desc">AI-powered healthcare diagnostic chatbot for patient symptom and disease identification. Integrates ML and NLP models via a Flask REST API for real-time medical inference and improved diagnostic accuracy.</div>
+        <div class="tags">
+          <span class="tag">Machine Learning</span><span class="tag">NLP</span><span class="tag">Healthcare</span><span class="tag">Flask API</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/keshavbhoovaragan-cpu/Criminal-Justice" target="_blank" class="proj-card">
+        <div class="proj-line"></div>
+        <div class="proj-num">02</div>
+        <div class="proj-arrow">↗</div>
+        <div class="proj-lang-row"><div class="lang-sq"></div>Python · Jupyter · Scikit-learn</div>
+        <div class="proj-title">Criminal Justice &amp; Recidivism</div>
+        <div class="proj-desc">Unbiased ML recidivism risk assessment model designed to reduce systemic bias in criminal justice predictions. Evaluated across multiple fairness and efficiency metrics — won 1st Place at Inspirit AI Scholars (Stanford).</div>
+        <div class="tags">
+          <span class="tag">AI Ethics</span><span class="tag">Scikit-learn</span><span class="tag">Fairness ML</span><span class="tag">1st Place</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/keshavbhoovaragan-cpu/Criminal-Justice" target="_blank" class="proj-card">
+        <div class="proj-line"></div>
+        <div class="proj-num">03</div>
+        <div class="proj-arrow">↗</div>
+        <div class="proj-lang-row"><div class="lang-sq"></div>React · Flask · Python · Location API</div>
+        <div class="proj-title">Meal Match</div>
+        <div class="proj-desc">Real-time food redistribution platform connecting restaurants with nearby individuals and organizations in need. Built with React and Flask APIs, enabling fast location-based food sharing to reduce waste and fight hunger.</div>
+        <div class="tags">
+          <span class="tag">React</span><span class="tag">Flask</span><span class="tag">Location API</span><span class="tag">Social Impact</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/keshavbhoovaragan-cpu" target="_blank" class="proj-card" style="justify-content:center;align-items:center;text-align:center;background:var(--cream2);">
+        <div class="proj-line"></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--ink);margin-bottom:8px;">More on GitHub →</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;">github.com/keshavbhoovaragan-cpu</div>
+      </a>
+
+    </div>
+
+    <!-- YOUTUBE SECTION -->
+    <div style="margin-top:64px;border-top:2px solid var(--ink);padding-top:56px;">
+      <div class="sec-tag">Content Creation</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);letter-spacing:2px;line-height:0.95;margin-bottom:32px;">TECH WITH KESHAV</h2>
+      <a href="https://www.youtube.com/@kbthetechboss9169" target="_blank" class="yt-card reveal">
+        <div class="yt-left">
+          <div class="yt-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <div>
+            <div class="yt-title">@kbthetechboss9169</div>
+            <div class="yt-sub">Tech tutorials, ML breakdowns &amp; dev content</div>
+          </div>
+        </div>
+        <div class="yt-cta">Visit Channel ↗</div>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ACTIVITIES -->
+  <div class="act-section">
+    <div class="sec-tag">Leadership &amp; Extracurriculars</div>
+    <h2 class="sec-title">BEYOND<br>THE CODE</h2>
+
+    <div class="act-grid reveal">
+      <div class="act-card">
+        <div class="act-icon">📊</div>
+        <div class="act-title">OMBA Society</div>
+        <div class="act-org">UMD · Aug 2025 – Present</div>
+        <div class="act-desc">SQL, Python &amp; ML workshops; complex business case analysis using statistical modeling and data-driven strategies.</div>
+        <div class="act-bar"></div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon">🥇</div>
+        <div class="act-title">Inspirit AI</div>
+        <div class="act-org">Stanford · Jun – Aug 2025</div>
+        <div class="act-desc">Developed unbiased ML recidivism risk assessment. Won 1st Place for best AI algorithm and most efficient solution.</div>
+        <div class="act-award">🏆 1st Place</div>
+        <div class="act-bar"></div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon">💻</div>
+        <div class="act-title">Teens Teach Tech</div>
+        <div class="act-org">Chapter Leader · Sep 2022–Present</div>
+        <div class="act-desc">Led digital literacy workshops for elderly adults; mentored junior volunteers and expanded program reach.</div>
+        <div class="act-bar"></div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon">🎾</div>
+        <div class="act-title">Tennis</div>
+        <div class="act-org">CB South + UMD Club · 2021–Present</div>
+        <div class="act-desc">2nd/3rd Varsity Doubles for 3 years. Won Best Doubles Team in the State of PA. Now competing at UMD Club level.</div>
+        <div class="act-award">🏅 State Champ</div>
+        <div class="act-bar"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div>&copy; 2026 KESHAV BHOOVARAGAN</div>
+  <div class="footer-links">
+    <a href="index.html">HOME</a><a href="experience.html">EXPERIENCE</a><a href="skills.html">SKILLS</a><a href="contact.html">CONTACT</a>
+  </div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/kbhoovar" target="_blank">LINKEDIN</a>
+    <a href="https://github.com/keshavbhoovaragan-cpu" target="_blank">GITHUB</a>
+    <a href="https://www.youtube.com/@kbthetechboss9169" target="_blank">YOUTUBE</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

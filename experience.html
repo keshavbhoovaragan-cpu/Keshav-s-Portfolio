@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience — Keshav Bhoovaragan</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-hero {
+    padding: 72px 40px 0;
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: end; border-bottom: 1px solid var(--border);
+    padding-bottom: 40px;
+    position: relative; overflow: hidden;
+  }
+  .page-hero-bg {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(100px, 18vw, 220px);
+    color: var(--cream2); line-height: 1; letter-spacing: 4px;
+    position: absolute; right: -20px; bottom: -20px;
+    pointer-events: none; user-select: none; z-index: 0;
+  }
+  .page-hero > * { position: relative; z-index: 1; }
+  .page-hero-right {
+    text-align: right; padding-bottom: 4px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    color: var(--muted); letter-spacing: 1px; line-height: 2;
+  }
+
+  /* ── TIMELINE ── */
+  .exp-layout {
+    display: grid; grid-template-columns: 220px 1fr;
+    gap: 0; padding: 0 40px; margin-top: 64px;
+  }
+
+  .exp-sidebar {
+    padding-right: 40px; border-right: 1px solid var(--border);
+    position: sticky; top: calc(var(--nav-h) + 32px);
+    height: fit-content;
+  }
+
+  .exp-toc-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .exp-toc-item {
+    display: block; padding: 10px 0; border-bottom: 1px solid var(--cream3);
+    text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    color: var(--ink3); letter-spacing: .5px; transition: color 0.2s; position: relative;
+    padding-left: 14px;
+  }
+  .exp-toc-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 1px; background: var(--border); transition: background 0.2s, width 0.2s; }
+  .exp-toc-item:hover { color: var(--orange); }
+  .exp-toc-item:hover::before { background: var(--orange); width: 10px; }
+
+  .exp-main { padding-left: 60px; }
+
+  /* job card */
+  .job {
+    margin-bottom: 64px; padding-bottom: 64px;
+    border-bottom: 1px solid var(--cream3); position: relative;
+  }
+  .job:last-of-type { border-bottom: none; }
+
+  .job-meta {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap; margin-bottom: 24px;
+  }
+
+  .job-company {
+    font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 2px;
+    color: var(--ink); line-height: 1; display: flex; align-items: baseline; gap: 14px;
+  }
+  .job-company-slash { color: var(--orange); }
+
+  .job-role {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+    color: var(--ink3); letter-spacing: 1px; margin-top: 4px;
+  }
+
+  .job-period {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    color: var(--muted); letter-spacing: 1px;
+    border: 1px solid var(--border); padding: 6px 12px;
+    background: var(--cream2); white-space: nowrap;
+  }
+
+  .job-bullets { list-style: none; margin: 24px 0; display: flex; flex-direction: column; gap: 14px; }
+  .job-bullets li {
+    display: flex; gap: 16px; font-size: 14px; color: var(--ink3); line-height: 1.65;
+    padding-bottom: 14px; border-bottom: 1px solid var(--cream3);
+  }
+  .job-bullets li:last-child { border-bottom: none; padding-bottom: 0; }
+  .job-bullet-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--orange); min-width: 24px; margin-top: 3px; }
+
+  /* ── EDUCATION BLOCK ── */
+  .edu-block {
+    margin-top: 80px; padding-top: 64px; padding-bottom: 80px;
+    border-top: 2px solid var(--ink);
+  }
+
+  .edu-inner {
+    display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start;
+    padding: 40px; border: 1px solid var(--border); background: var(--cream2);
+    transition: all 0.25s;
+  }
+  .edu-inner:hover { box-shadow: 6px 6px 0 var(--orange); transform: translate(-3px,-3px); }
+
+  .edu-badge {
+    width: 88px; height: 88px; background: var(--ink); color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px;
+    flex-shrink: 0;
+  }
+
+  .edu-deg { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; line-height: 1; margin-bottom: 6px; }
+  .edu-school { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--orange); letter-spacing: 1px; margin-bottom: 20px; }
+  .edu-courses { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .edu-course { border: 1px solid var(--border); padding: 4px 10px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; color: var(--ink3); }
+
+  .honors { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .honor {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--ink); color: var(--cream);
+    padding: 6px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  }
+
+  @media (max-width: 900px) {
+    .exp-layout { grid-template-columns: 1fr; padding: 0 16px; margin-top: 32px; }
+    .exp-sidebar { display: none; }
+    .exp-main { padding-left: 0; }
+    .page-hero { padding: 32px 16px 28px; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .page-hero-right { text-align: left; }
+    .page-hero-bg { font-size: 100px; right: -10px; bottom: -10px; }
+    .job { padding: 24px 16px; margin-bottom: 36px; }
+    .job-company { font-size: 28px; }
+    .job-meta { flex-direction: column; gap: 8px; }
+    .job-period { align-self: flex-start; }
+    .job-bullets li { font-size: 13px; gap: 8px; }
+    .edu-inner { grid-template-columns: 1fr; padding: 24px 16px; }
+    .edu-block { padding: 32px 0 48px; margin-top: 32px; }
+    .edu-deg { font-size: 22px; }
+    .honors { flex-direction: column; }
+    .honor { font-size: 12px; }
+    .timeline::before { display: none; }
+    .timeline { padding-left: 0; }
+    .t-item::before { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="kb-cursor"></div>
+<div id="kb-cursor-dot"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">KB<span class="nav-logo-slash">/</span></a>
+  <div class="nav-center">EXPERIENCE &mdash; <span id="kb-time">00:00:00</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="experience.html" class="active">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap page-enter">
+  <div style="position:relative;">
+    <div class="page-hero">
+      <div>
+        <div class="sec-tag">Work History</div>
+        <h1 class="sec-title" style="margin-bottom:0;">EXPERIENCE<br>&amp; EDUCATION</h1>
+      </div>
+      <div class="page-hero-right" style="display:flex;flex-direction:column;gap:4px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;">
+        <div>3 Roles</div>
+        <div>2023 &mdash; Present</div>
+        <div>IBM &middot; Ascendion</div>
+      </div>
+      <div class="page-hero-bg">EXP</div>
+    </div>
+  </div>
+
+  <div class="exp-layout">
+    <!-- sidebar TOC -->
+    <div class="exp-sidebar reveal-left">
+      <div class="exp-toc-label">// Index</div>
+      <a href="#ibm" class="exp-toc-item">IBM &mdash; 2026</a>
+      <a href="#asc24" class="exp-toc-item">Ascendion &mdash; 2024</a>
+      <a href="#asc23" class="exp-toc-item">Ascendion &mdash; 2023</a>
+      <a href="#edu" class="exp-toc-item">Education</a>
+      <div style="margin-top:40px;padding-top:24px;border-top:1px solid var(--border);">
+        <div class="exp-toc-label">// Total</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--ink);">2+ Yrs</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:1px;">INDUSTRY EXPERIENCE</div>
+      </div>
+    </div>
+
+    <!-- main content -->
+    <div class="exp-main">
+
+      <div class="job reveal" id="ibm">
+        <div class="job-meta">
+          <div>
+            <div class="job-company">IBM <span class="job-company-slash">/</span></div>
+            <div class="job-role">SOFTWARE DEVELOPMENT ENGINEER INTERN &nbsp;·&nbsp; SAN JOSE, CA</div>
+          </div>
+          <div class="job-period">MAY 2026 &mdash; AUG 2026</div>
+        </div>
+        <ul class="job-bullets">
+          <li><span class="job-bullet-num">01.</span>Supporting backend software development within an agile engineering team at enterprise scale.</li>
+          <li><span class="job-bullet-num">02.</span>Designing, developing, testing, and debugging software components for large-scale enterprise systems.</li>
+          <li><span class="job-bullet-num">03.</span>Collaborating cross-functionally to implement features, conduct code reviews, and follow best practices.</li>
+          <li><span class="job-bullet-num">04.</span>Applying OOP, data structures, version control, and modern development workflows.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Java</span><span class="tag">Agile</span><span class="tag">Backend</span><span class="tag">Enterprise Systems</span>
+        </div>
+      </div>
+
+      <div class="job reveal" id="asc24">
+        <div class="job-meta">
+          <div>
+            <div class="job-company">Ascendion <span class="job-company-slash">/</span></div>
+            <div class="job-role">ML ENGINEER INTERN &nbsp;·&nbsp; PHILADELPHIA, PA &nbsp;·&nbsp; SUMMER 2024</div>
+          </div>
+          <div class="job-period">MAY 2024 &mdash; AUG 2024</div>
+        </div>
+        <ul class="job-bullets">
+          <li><span class="job-bullet-num">01.</span>Engineered real-time monitoring and predictive risk models to track protocol adherence and flag deviations during trial execution.</li>
+          <li><span class="job-bullet-num">02.</span>Designed a Flask-based REST API integrating ML and NLP models into a production healthcare diagnostic chatbot.</li>
+          <li><span class="job-bullet-num">03.</span>Structured backend logic for user inputs, model inference, and response generation — improving modularity and scalability.</li>
+          <li><span class="job-bullet-num">04.</span>Improved chatbot diagnostic accuracy by <span class="pill">~20%</span> through feature engineering, hyperparameter tuning, and iterative refinement.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Flask</span><span class="tag">NLP</span><span class="tag">Machine Learning</span><span class="tag">REST API</span><span class="tag">Python</span><span class="tag">Healthcare AI</span>
+        </div>
+      </div>
+
+      <div class="job reveal" id="asc23">
+        <div class="job-meta">
+          <div>
+            <div class="job-company">Ascendion <span class="job-company-slash">/</span></div>
+            <div class="job-role">ML ENGINEER INTERN &nbsp;·&nbsp; PHILADELPHIA, PA &nbsp;·&nbsp; SUMMER 2023</div>
+          </div>
+          <div class="job-period">MAY 2023 &mdash; AUG 2023</div>
+        </div>
+        <ul class="job-bullets">
+          <li><span class="job-bullet-num">01.</span>Designed ML models to optimize clinical trial patient cohort groupings, reducing outcome variability by <span class="pill">~15%</span>.</li>
+          <li><span class="job-bullet-num">02.</span>Automated clinical site selection and risk-scoring pipelines, cutting analysis time by <span class="pill">30%</span>.</li>
+          <li><span class="job-bullet-num">03.</span>Analyzed structured datasets across <span class="pill">50+ sites</span> to support data-driven site evaluation and resource allocation.</li>
+          <li><span class="job-bullet-num">04.</span>Streamlined patient recruitment analytics, contributing to a <span class="pill">15–20%</span> reduction in enrollment delays.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Data Analysis</span><span class="tag">Clinical Trials</span><span class="tag">Pipeline Automation</span>
+        </div>
+      </div>
+
+      <div class="edu-block" id="edu">
+        <div class="sec-tag">Education</div>
+        <h2 class="sec-title">ACADEMIC<br>BACKGROUND</h2>
+        <div class="edu-inner reveal">
+          <div class="edu-badge">UMD</div>
+          <div>
+            <div class="edu-deg">B.S. Operations Management &amp; Business Analytics</div>
+            <div class="edu-school">UNIVERSITY OF MARYLAND · ROBERT H. SMITH SCHOOL OF BUSINESS · MAY 2027</div>
+            <div class="edu-courses">
+              <span class="edu-course">Business Statistics</span>
+              <span class="edu-course">Machine Learning</span>
+              <span class="edu-course">Data Structures</span>
+              <span class="edu-course">OOP I &amp; II</span>
+              <span class="edu-course">Financial Accounting</span>
+              <span class="edu-course">Managerial Accounting</span>
+              <span class="edu-course">Business Finance</span>
+              <span class="edu-course">Business Law</span>
+              <span class="edu-course">International Business</span>
+            </div>
+            <div class="honors">
+              <div class="honor">🏆 PJAS Env. Science — 1st Place District &amp; State (2023–2025)</div>
+              <div class="honor">✍️ Naval Horizon Essay Writing Award, 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>&copy; 2026 KESHAV BHOOVARAGAN</div>
+  <div class="footer-links">
+    <a href="index.html">HOME</a><a href="projects.html">PROJECTS</a><a href="skills.html">SKILLS</a><a href="contact.html">CONTACT</a>
+  </div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/kbhoovar" target="_blank">LINKEDIN</a>
+    <a href="https://github.com/keshavbhoovaragan-cpu" target="_blank">GITHUB</a>
+    <a href="https://www.youtube.com/@kbthetechboss9169" target="_blank">YOUTUBE</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>
