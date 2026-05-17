@@ -201,7 +201,7 @@ nav {
 /* ── PILL ── */
 .pill {
   display: inline-block; background: var(--orange); color: #fff;
-  padding: 1px 5px; font-size: 9px; font-family: 'IBM Plex Mono', monospace;
+  padding: 2px 7px; font-size: 11px; font-family: 'IBM Plex Mono', monospace;
 }
 
 /* ── FOOTER ── */
