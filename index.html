@@ -162,6 +162,10 @@
   @media (max-width: 480px) {
     .ql-grid { grid-template-columns: 1fr; }
   }
+  @keyframes pulse-green {
+    0%, 100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.5; transform:scale(1.3); }
+  }
 </style>
 </head>
 <body>
@@ -189,7 +193,7 @@
       <div class="data-item"><span>LOC</span><span>Chalfont, PA</span></div>
       <div class="data-item"><span>GRAD</span><span>May 2027</span></div>
       <div class="data-bar-right">
-        <div class="data-item"><span>IBM</span><span>SDE Intern</span></div>
+        <div class="data-item"><span>IBM</span><span style="display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse-green 1.5s infinite;"></span>SDE Intern · Active</span></div>
         <div class="data-item"><span>UMD</span><span>Smith School '27</span></div>
       </div>
     </div>
@@ -209,6 +213,7 @@
           <div class="hero-ctas">
             <a href="experience.html" class="btn btn-fill">View Experience →</a>
             <a href="contact.html" class="btn btn-outline">Connect</a>
+            <a href="https://github.com/keshavbhoovaragan-cpu/Keshav-s-Portfolio/raw/main/Keshav_Bhoovaragan_ResumeCS.pdf" target="_blank" class="btn btn-outline" style="border-color:var(--orange);color:var(--orange);">↓ Resume</a>
           </div>
         </div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;padding-top:32px;border-top:1px solid var(--border);">
@@ -299,6 +304,18 @@
 
 </div>
 
+<div style="border-top:1px solid var(--border);padding:48px 40px;">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--orange);letter-spacing:2px;margin-bottom:24px;">// CURRENTLY LEARNING</div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">Agentic AI Systems</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">watsonx Platform</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">LLM Fine-tuning</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">Cloud-Native Backend</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">TypeScript</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">System Design</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">Docker &amp; Kubernetes</span>
+  </div>
+</div>
 <footer>
   <div>&copy; 2026 KESHAV BHOOVARAGAN</div>
   <div class="footer-links">
