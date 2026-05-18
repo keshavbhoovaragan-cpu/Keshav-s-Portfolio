@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Keshav Bhoovaragan</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .about-hero{padding:72px 40px 40px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-end;position:relative;overflow:hidden;}
+  .page-hero-bg{font-family:"Bebas Neue",sans-serif;font-size:clamp(100px,18vw,220px);color:var(--cream2);line-height:1;letter-spacing:4px;position:absolute;right:-20px;bottom:-20px;pointer-events:none;user-select:none;z-index:0;}
+  .about-hero>*{position:relative;z-index:1;}
+  .sec-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--orange);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+  .sec-tag::before{content:"";display:inline-block;width:24px;height:1px;background:var(--orange);}
+  .sec-title{font-family:"Bebas Neue",sans-serif;font-size:clamp(48px,8vw,96px);letter-spacing:2px;line-height:1;color:var(--ink);margin:0;}
+  .about-section{border-top:1px solid var(--border);padding:48px 40px;}
+  .section-label{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--orange);letter-spacing:2px;margin-bottom:32px;}
+  @media(max-width:768px){.about-hero{padding:48px 20px 32px;}.about-section{padding:32px 20px;}.three-col{grid-template-columns:1fr!important;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">KB<span class="nav-logo-slash">/</span></a>
+  <div class="nav-center">EXPERIENCE &mdash; <span id="kb-time">00:00:00</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="experience.html" class="active">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<div class="page-wrap page-enter">
+  <div class="about-hero">
+    <div>
+      <div class="sec-tag">About Me</div>
+      <h1 class="sec-title">WHO I AM<br>&amp; WHY IT MATTERS</h1>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;line-height:2;text-align:right;">
+      <div>Business + ML + SWE</div>
+      <div>IBM SDE Intern 2026</div>
+      <div>UMD Smith School '27</div>
+    </div>
+    <div class="page-hero-bg">KB</div>
+  </div>
+
+  <div class="about-section">
+    <div class="section-label">// WHY HIRE ME</div>
+    <div class="three-col" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div style="border:1px solid var(--border);padding:28px 24px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:10px;">Business + Tech</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);line-height:1.8;">Most engineers cannot talk business. Most business majors cannot code. I do both — OMBA + Information Risk Management + 2 ML internships + IBM SDE.</div></div>
+      <div style="border:1px solid var(--border);padding:28px 24px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:10px;">Real Enterprise AI</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);line-height:1.8;">Not just academic projects. Built production Flask APIs, watsonx AI systems, and clinical trial ML pipelines at enterprise scale across 50+ sites.</div></div>
+      <div style="border:1px solid var(--border);padding:28px 24px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:10px;">Proven Results</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);line-height:1.8;">~20% diagnostic accuracy boost. ~30% latency reduction. 1st Place AI algorithm at Inspirit AI Stanford. Presidential Scholarship recipient.</div></div>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <div class="section-label">// GITHUB ACTIVITY</div>
+    <img src="https://ghchart.rshah.org/e8530a/keshavbhoovaragan-cpu" alt="GitHub contributions" style="width:100%;border:1px solid var(--border);padding:16px;box-sizing:border-box;"/>
+  </div>
+
+  <div class="about-section">
+    <div class="section-label">// CURRENTLY LEARNING</div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">Agentic AI Systems</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">watsonx Platform</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">LLM Fine-tuning</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">Cloud-Native Backend</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">TypeScript</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">System Design</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--border);padding:6px 14px;">Docker &amp; Kubernetes</span>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <div class="section-label">// BEYOND THE CODE</div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;">
+      <div style="border:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🎾</span><div><div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;">Tennis</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);">State Champ · CB South + UMD Club</div></div></div>
+      <div style="border:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🎥</span><div><div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;">YouTube Creator</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);">Tech with Keshav · @kbthetechboss9169</div></div></div>
+      <div style="border:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">💪</span><div><div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;">Gym</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);">Daily discipline · strength training</div></div></div>
+      <div style="border:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🏈</span><div><div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;">Football &amp; Basketball</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);">Watching + playing casually</div></div></div>
+      <div style="border:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🎵</span><div><div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;">Music</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);">Always on while coding</div></div></div>
+      <div style="border:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">📺</span><div><div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;">Binging TV Shows</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);">Certified binge-watcher</div></div></div>
+    </div>
+  </div>
+
+</div>
+<footer>
+  <div>&copy; 2026 KESHAV BHOOVARAGAN</div>
+  <div class="footer-links">
+    <a href="index.html">HOME</a><a href="projects.html">PROJECTS</a><a href="skills.html">SKILLS</a><a href="contact.html">CONTACT</a>
+  </div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/kbhoovar" target="_blank">LINKEDIN</a>
+    <a href="https://github.com/keshavbhoovaragan-cpu" target="_blank">GITHUB</a>
+    <a href="https://www.youtube.com/@kbthetechboss9169" target="_blank">YOUTUBE</a>
+  </div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>
