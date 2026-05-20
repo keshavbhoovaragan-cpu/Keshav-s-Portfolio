@@ -137,9 +137,9 @@
       <h1 class="sec-title" style="margin-bottom:0;">PROJECTS<br>&amp; BEYOND</h1>
     </div>
     <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;line-height:2;text-align:right;">
-      <div>3 Projects</div>
-      <div>4 Activities</div>
-      <div>1 YouTube Channel</div>
+      <div><span id="proj-count">0</span> Projects</div>
+      <div><span id="act-count">0</span> Activities</div>
+      <div><span id="yt-count">1</span> YouTube Channel</div>
     </div>
     <div class="page-hero-bg">PRJ</div>
   </div>
@@ -289,5 +289,9 @@
 </footer>
 
 <script src="shared.js"></script>
+<script>
+document.getElementById("proj-count").textContent = document.querySelectorAll(".proj-grid .proj-card:not([style*=cream2])").length;
+document.getElementById("act-count").textContent = document.querySelectorAll(".act-card").length;
+</script>
 </body>
 </html>
