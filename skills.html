@@ -109,8 +109,8 @@
       <h1 class="sec-title" style="margin-bottom:0;">SKILLS &amp;<br>TECHNOLOGIES</h1>
     </div>
     <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;line-height:2;text-align:right;">
-      <div>8 Categories</div>
-      <div>35+ Skills</div>
+      <div><span id="cat-count">0</span> Categories</div>
+      <div><span id="skill-count">0</span>+ Skills</div>
       <div>2+ Yrs Applied Use</div>
     </div>
     <div class="page-hero-bg">SKL</div>
@@ -517,6 +517,11 @@
 </footer>
 
 <script src="shared.js"></script>
+<script>
+const cats = new Set([...document.querySelectorAll(".sk-card[data-cat]")].map(c => c.dataset.cat).filter(c => c !== "all"));
+document.getElementById("cat-count").textContent = cats.size;
+document.getElementById("skill-count").textContent = document.querySelectorAll(".sk-card[data-cat]").length;
+</script>
 <script>
   // filter
   document.querySelectorAll('.f-btn').forEach(btn => {
