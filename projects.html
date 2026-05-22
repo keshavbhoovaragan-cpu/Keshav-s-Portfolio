@@ -177,7 +177,12 @@
         <div class="proj-arrow">↗</div>
         <div class="proj-lang-row"><div class="lang-sq"></div>Next.js · FastAPI · Python · Rust · Redis</div>
         <div class="proj-title">AthleteIQ</div>
-        <div class="proj-desc">Full-stack NBA analytics platform with a Rust-powered fantasy scoring engine running 1B+ calculations/sec, real-time player stats, ML performance predictions, trade analyzer, streak detection, and fantasy draft board across 4,500+ players.</div>
+        <div class="proj-desc">Built NBA analytics platform at <a href="https://athlete-iq-jmk3.vercel.app" target="_blank" style="color:var(--orange);">athlete-iq-jmk3.vercel.app</a> — Next.js 14, FastAPI, Rust, SQLite, Redis across 9 features.</div>
+        <ul style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);line-height:1.9;margin:10px 0 0 16px;padding:0;">
+          <li>Rust binary processing <span class="pill">1B+/sec</span> fantasy score calculations, called from Python via subprocess with graceful fallback</li>
+          <li>Deployed full-stack with Docker multi-stage build on Railway, Next.js frontend on Vercel</li>
+          <li>Real-time NBA position enforcement using NBA.com API — Centers cannot play Guard slots</li>
+        </ul>
         <div class="tags">
           <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span><span class="tag">Rust</span><span class="tag">Redis</span><span class="tag">SQLite</span><span class="tag">ML</span>
         </div>
