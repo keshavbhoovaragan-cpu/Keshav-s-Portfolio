@@ -94,11 +94,15 @@
 
   .job-bullets { list-style: none; margin: 24px 0; display: flex; flex-direction: column; gap: 14px; }
   .job-bullets li {
-    display: flex; gap: 16px; font-size: 14px; color: var(--ink3); line-height: 1.65;
-    padding-bottom: 14px; border-bottom: 1px solid var(--cream3);
+    display: flex; gap: 12px; font-size: 14px; color: var(--ink3); line-height: 1.65;
+    padding-bottom: 14px; border-bottom: 1px solid var(--cream3); align-items: flex-start;
   }
   .job-bullets li:last-child { border-bottom: none; padding-bottom: 0; }
-  .job-bullet-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--orange); min-width: 24px; margin-top: 3px; }
+  .job-bullet-num {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--orange);
+    min-width: 18px; margin-top: 3px; flex-shrink: 0; display: inline-block;
+  }
+  .job-bullets li > span:last-child { flex: 1; }
 
   /* ── EDUCATION BLOCK ── */
   .edu-block {
@@ -213,9 +217,9 @@
           <div class="job-period">MAY 2026 &mdash; AUG 2026</div>
         </div>
         <ul class="job-bullets">
-          <li><span class="job-bullet-num">01.</span>Reduced manual support interactions by <span class="pill">40%</span> across a <span class="pill">10,000+ user</span> enterprise platform by engineering an AI agent that parses natural language voice and chat input to autonomously navigate the UI and complete end-to-end tasks.</li>
-          <li><span class="job-bullet-num">02.</span>Unlocked AI-powered platform features by leading a full React Router v6+ migration, restructuring route hierarchies, refactoring <span class="pill">20+ page components</span> to the loader/action data API model, and resolving cascading breaking changes.</li>
-          <li><span class="job-bullet-num">03.</span>Improved UI consistency and developer velocity across a <span class="pill">12-engineer team</span> by establishing reusable React/TypeScript component patterns, enforcing design-system standards, and leading code reviews that reduced UI-related bugs by <span class="pill">30%</span> in production.</li>
+          <li><span class="job-bullet-num">01.</span><span>Reduced manual support interactions by <span class="pill">40%</span> across a <span class="pill">10,000+ user</span> enterprise platform by engineering an AI agent that parses natural language voice and chat input to autonomously navigate the UI and complete end-to-end tasks.</span></li>
+          <li><span class="job-bullet-num">02.</span><span>Unlocked AI-powered platform features by leading a full React Router v6+ migration, restructuring route hierarchies, refactoring <span class="pill">20+ page components</span> to the loader/action data API model, and resolving cascading breaking changes.</span></li>
+          <li><span class="job-bullet-num">03.</span><span>Improved UI consistency and developer velocity across a <span class="pill">12-engineer team</span> by establishing reusable React/TypeScript component patterns, enforcing design-system standards, and leading code reviews that reduced UI-related bugs by <span class="pill">30%</span> in production.</span></li>
         </ul>
         <div class="tags">
           <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">AI Agents</span><span class="tag">Frontend Architecture</span><span class="tag">Enterprise Systems</span>
