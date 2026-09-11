@@ -48,6 +48,16 @@
   .proj-arrow { position:absolute; top:32px; right:32px; font-size:22px; color:var(--border); transition:all 0.2s; }
 
   .proj-lang-row { display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:1px; margin-bottom:14px; }
+
+  .proj-links { display:flex; gap:10px; margin-top:16px; position:relative; z-index:1; }
+  .proj-link {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:1px; text-transform:uppercase;
+    text-decoration:none; border:1px solid var(--border); color:var(--ink3);
+    padding:6px 12px; transition:all 0.2s;
+  }
+  .proj-link:hover { border-color:var(--orange); color:var(--orange); }
+  .proj-link-live { color:#fff; background:var(--orange); border-color:var(--orange); }
+  .proj-link-live:hover { color:#fff; background:var(--orange2); border-color:var(--orange2); }
   .lang-sq { width:8px; height:8px; background:var(--orange); display:inline-block; }
 
   .proj-title { font-family:'Bebas Neue',sans-serif; font-size:30px; letter-spacing:1px; line-height:1.05; color:var(--ink); margin-bottom:12px; }
@@ -171,17 +181,20 @@
         </div>
       </a>
 
-      <a href="https://github.com/keshavbhoovaragan-cpu/AthleteIQ" target="_blank" class="proj-card">
+      <div class="proj-card">
         <div class="proj-line"></div>
         <div class="proj-num">03</div>
-        <div class="proj-arrow">↗</div>
         <div class="proj-lang-row"><div class="lang-sq"></div>Next.js 14 · TypeScript · FastAPI · Python 3.11 · Rust · SQLite</div>
         <div class="proj-title">AthleteIQ</div>
         <div class="proj-desc">Full-stack NBA analytics and fantasy platform built with Next.js 14 (App Router, TypeScript) on the frontend and a FastAPI Python backend with SQLite storage, deployed on Vercel + Render (Docker). A compiled Rust binary handles batch fantasy-score computation at roughly 1B calculations/sec versus ~70K/sec in pure Python, while defensive data handling ensures graceful fallbacks when live nba_api requests are blocked or roster data is inconsistent.</div>
         <div class="tags">
           <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span><span class="tag">Rust</span><span class="tag">SQLite</span><span class="tag">AI Assistant</span>
         </div>
-      </a>
+        <div class="proj-links">
+          <a href="https://athlete-iq-jmk3-2heffm3gt-keshavbhoovaragan-cpus-projects.vercel.app" target="_blank" class="proj-link proj-link-live">Live ↗</a>
+          <a href="https://github.com/keshavbhoovaragan-cpu/AthleteIQ" target="_blank" class="proj-link">Code ↗</a>
+        </div>
+      </div>
 
       <a href="https://github.com/keshavbhoovaragan-cpu/offer-verify" target="_blank" class="proj-card">
         <div class="proj-line"></div>
