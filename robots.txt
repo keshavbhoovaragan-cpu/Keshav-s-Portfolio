@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://keshavbhoovaragan-cpu.github.io/Keshav-s-Portfolio/sitemap.xml
